@@ -4,7 +4,10 @@ export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">Best Movies Worldwide</Link>
+        {/* LOGO → HOME */}
+        <Link className="navbar-brand" to="/">
+          Best Movies Worldwide
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -20,12 +23,21 @@ export default function Header() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+            {/* HOME */}
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
             </li>
+
+            {/* MOVIES */}
             <li className="nav-item">
-              <Link className="nav-link" to="/movies">Film</Link>
+              <Link className="nav-link" to="/movies">
+                Movies
+              </Link>
             </li>
+
           </ul>
         </div>
       </div>
