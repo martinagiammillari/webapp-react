@@ -1,23 +1,33 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Movies() {
-  useEffect(()=> {
-    console.log("chiamo api")
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
     axios
-    .get("http://localhost:3600/api/movies")
-    .then((resp)=>{
-      console.log(resp.data.results);
-    })
-    .catch((err)=>{
-      console.log(err);
-    });
-  
+      .get("http://localhost:3600/api/movies")
+      .then((resp) => {
+        console.log("MOVIE LIST:", resp.data.results);
+        setMovies(resp.data.results); 
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
+
   return (
     <div className="container mt-4">
       <h1>Movies</h1>
-      <p>Here you can find you're movie's list</p>
+      <p>Here you can find your movie's list</p>
+
+      <ul className="list-group">
+        {movies.map((movie) => (
+          <li key={movie.id} className="list-group-item">
+            <strong>{movie.title}</strong>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
