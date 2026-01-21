@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import MovieCard from "../components/MovieCard";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -8,8 +9,7 @@ export default function Movies() {
     axios
       .get("http://localhost:3600/api/movies")
       .then((resp) => {
-        console.log("MOVIE LIST:", resp.data.results);
-        setMovies(resp.data.results); 
+        setMovies(resp.data.results);
       })
       .catch((err) => {
         console.error(err);
@@ -19,15 +19,14 @@ export default function Movies() {
   return (
     <div className="container mt-4">
       <h1>Movies</h1>
-      <p>Here you can find your movie's list</p>
 
-      <ul className="list-group">
+      <div className="row">
         {movies.map((movie) => (
-          <li key={movie.id} className="list-group-item">
-            <strong>{movie.title}</strong>
-          </li>
+          <div key={movie.id} className="col-md-4 mb-3">
+            <MovieCard movie={movie} />
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
