@@ -1,9 +1,12 @@
+const backendBaseUrl= import.meta.env.VITE_BACKEND_URL;
+
+
 export default function MovieCard({ movie }) {
   return (
     <div className="card h-100">
       {/* Immagine */}
       <img
-        src={`http://localhost:3600/images/${movie.image}`}
+        src={`${backendBaseUrl}/images/${movie.image}`}
         className="card-img-top"
         alt={movie.title}
       />

@@ -2,12 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 
+const backendBaseUrl= import.meta.env.VITE_BACKEND_URL;
+
+
 export default function Movies() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3600/api/movies")
+      .get(`${backendBaseUrl}/api/movies`)
       .then((resp) => {
         setMovies(resp.data.results);
       })
