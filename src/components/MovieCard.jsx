@@ -27,7 +27,7 @@ export default function MovieCard({ movie }) {
         </p>
 
         {/* BOTTONE */}
-        <Link to={`/movies/${movie.id}`} className="btn btn-primary mt-3">
+        <Link to={`/movies/${movie.slug}`} className="btn btn-primary mt-3">
           Discover more
         </Link>
       </div>

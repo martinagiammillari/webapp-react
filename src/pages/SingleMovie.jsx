@@ -6,12 +6,12 @@ import ReviewForm from "../components/ReviewForm";
 const backendBaseUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function SingleMovie() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [movie, setMovie] = useState(null);
 
   function fetchMovie() {
     axios
-      .get(`${backendBaseUrl}/api/movies/${id}`)
+      .get(`${backendBaseUrl}/api/movies/${slug}`)
       .then((resp) => {
         setMovie(resp.data);
       });
@@ -19,7 +19,7 @@ export default function SingleMovie() {
 
   useEffect(() => {
     fetchMovie();
-  }, [id]);
+  }, [slug]);
 
   return (
     <div className="container mt-4">
@@ -54,7 +54,7 @@ export default function SingleMovie() {
       )}
 
       {/* FORM RECENSIONE */}
-      <ReviewForm movieId={id} onReviewAdded={fetchMovie} />
+      <ReviewForm movieId={slug} onReviewAdded={fetchMovie} />
     </div>
   );
 }
